@@ -15,18 +15,29 @@ function sortFruitsInArray() {
 
 console.log(sortFruitsInArray());
 
-// არის ტანვარჯიშის ორი გუნდი: **დელფინები და კოალები**
-// - თითოეული გუნდი სამჯერ ასპარეზობს და მათი შედეგი გამოითვლება საშუალო არითმეტიკულით.
-// - გუნდი მოიგებს მხოლოდ იმ შემთხვევაში, თუ ორჯერ მეტი საშუალო ქულა ექნება მეორე გუნდთან შედარებით, სხვა შემთხვევაში არცერთი გუნდი არ იქნება მოგებული!
+// Task 4
 
-// 1.1 შექმენი arrow ფუნქცია სახელად calcAverage და გამოითვალე 3 ასპარეზობის საშუალო არითმეტიკული. ამ ფუნქციას უნდა ჰქონდეს სამი პარამეტრი და უნდა დააბრუნოს ერთი რიცხვი(საშუალო არითმეტიკული).
+const calcAverage = (game1, game2, game3) => {
+  const average = (game1 + game2 + game3) / 3;
+  return average;
+};
 
-// 1.2 შექმენი ორი ცვლადი scoreDolphins და scoreKoalas, ამ ცვლადებს მიანიჭე მნიშვნელობად ფუნქცია calcAverage()
-// - შენ უნდა გამოიძახო ეს ფუნქცია და არგუმენტად გადასცე შეჯიბრების ქულები,
-// რომელიც დაბლა data-ში წერია.
+const checkWinner = (avgDolphins, avgKoalas) => {
+  if (avgDolphins > avgKoalas * 2) {
+    console.log(`avgDolphins win ${avgDolphins} vs ${avgKoalas}`);
+  } else if (avgDolphins < avgKoalas * 2) {
+    console.log(`avgKoalas win ${avgKoalas} vs ${avgDolphins}`);
+  } else {
+    console.log("No team wins...");
+  }
+};
 
-// 1.3 შექმენი ფუნქცია checkWinner, რომელიც იღებს ორ პარამეტრს avgDolphins და avgKoalas ამ ფუნქციაში უნდა გაწეროთ ლოგიკა, თუ ერთი გუნდის საშუალო ართმეთმეტიკული ორჯერ მეტია, მეორე გუნდის საშუალო არითმეტიკულზე , გუნდი მოგებულია, თუ არცერთი არ აკმაყოფილებს ამ პირობას, ვერცერთი გუნდი ვერ მოიგებს. თუ რომელიმე გუნდმა მოიგო, დაბეჭდეთ ეს ტექსტი: Koalas win (30 vs. 13), თუ ვერცერთმა მოიგო No team wins...
+let scoreDolphins = calcAverage(44, 23, 71);
+let scoreKoalas = calcAverage(65, 54, 49);
 
-// 1.4 გამოიყენე checkWinner ფუნქცია, რომ გამოავლინო გამარჯვებული
-// TEST DATA 1: Dolphins scored 44, 23, and 71. Koalas scored 65, 54, and 49.
-// TEST DATA 2: Dolphins scored 85, 54, and 41. Koalas scored 23, 34, and 27.
+checkWinner(scoreDolphins, scoreKoalas);
+
+scoreDolphins = calcAverage(85, 54, 41);
+scoreKoalas = calcAverage(23, 34, 27);
+
+checkWinner(scoreDolphins, scoreKoalas);
