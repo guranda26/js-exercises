@@ -1,3 +1,22 @@
+// Task 1
+function isPalindrome(str) {
+  let stringToLower = "";
+  let compareStr = "";
+  for (let i = 0; i < str.length; i++) {
+    compareStr += str[str.length - 1 - i].toLowerCase();
+    stringToLower += str[i].toLowerCase();
+  }
+  if (compareStr === stringToLower) {
+    console.log("ინფუთი არის პალიდრომი");
+  } else {
+    console.log("არ არის პალინდრომი");
+  }
+}
+
+isPalindrome("abc");
+isPalindrome("Anna");
+isPalindrome("level");
+
 // Task 2
 function cutFromArray() {
   const fruits = ["Banana", "Orange", "Apple", "Kiwi"];
