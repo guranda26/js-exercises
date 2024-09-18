@@ -1,62 +1,79 @@
 // Task 1
-function isPalindrome(str) {
-  let stringToLower = "";
-  let compareStr = "";
-  for (let i = 0; i < str.length; i++) {
-    compareStr += str[str.length - 1 - i].toLowerCase();
-    stringToLower += str[i].toLowerCase();
-  }
-  if (compareStr === stringToLower) {
-    console.log("ინფუთი არის პალიდრომი");
-  } else {
-    console.log("არ არის პალინდრომი");
-  }
+
+function sortStringAlphabetically(str) {
+  return str.split("").sort().join("");
 }
 
-isPalindrome("abc");
-isPalindrome("Anna");
-isPalindrome("level");
+console.log(sortStringAlphabetically("webmaster"));
 
 // Task 2
-function cutFromArray() {
-  const fruits = ["Banana", "Orange", "Apple", "Kiwi"];
-  return fruits.splice(1, 2);
+
+function generateUseID(idLength) {
+  const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  const charLength = characters.length;
+
+  for (let i = 0; i < idLength; i++) {
+    result += characters.charAt(Math.round(Math.random() * charLength));
+  }
+
+  return result;
 }
 
-console.log(cutFromArray());
+const useID = generateUseID(20);
+console.log(useID);
 
 // Task 3
-function sortFruitsInArray() {
-  const fruits = ["Banana", "Orange", "Apple", "Kiwi"];
-  fruits.sort();
-  return fruits;
+
+function isPerfectNum(perfectNum) {
+  let number = 0;
+  for (let i = 0; i <= perfectNum; i++) {
+    if (perfectNum % i === 0) {
+      number += i;
+    }
+  }
+  if (number / 2 === perfectNum) {
+    console.log(`${perfectNum} is a perfect number`);
+  } else {
+    console.log(`${perfectNum} is not a perfect number`);
+  }
 }
 
-console.log(sortFruitsInArray());
+isPerfectNum(6);
+isPerfectNum(12);
+isPerfectNum(10);
+isPerfectNum(5);
+isPerfectNum(2);
+isPerfectNum(28);
 
 // Task 4
 
-const calcAverage = (game1, game2, game3) => {
-  const average = (game1 + game2 + game3) / 3;
-  return average;
-};
+function js_style() {
+  const text = document.getElementById("text");
+  const btn = document.getElementById("jsstyle");
+  text.style.backgroundColor = "purple";
+  text.style.color = "#fff";
+  text.style.padding = "20px 10px";
+  text.style.textAlign = "center";
+  btn.style.backgroundColor = "rgb(170, 100, 300)";
+  btn.style.color = "#fff";
+  btn.style.border = "none";
+  btn.style.padding = "5px 7px";
+  btn.style.borderRadius = "4px";
+}
 
-const checkWinner = (avgDolphins, avgKoalas) => {
-  if (avgDolphins > avgKoalas * 2) {
-    console.log(`avgDolphins win ${avgDolphins} vs ${avgKoalas}`);
-  } else if (avgDolphins < avgKoalas * 2) {
-    console.log(`avgKoalas win ${avgKoalas} vs ${avgDolphins}`);
-  } else {
-    console.log("No team wins...");
-  }
-};
+function changeSelectColor() {
+  const selectEl = document.getElementById("colorSelect");
+  selectEl.style.color = selectEl.value;
 
-let scoreDolphins = calcAverage(44, 23, 71);
-let scoreKoalas = calcAverage(65, 54, 49);
+  document
+    .getElementById("colorSelect")
+    .addEventListener("change", changeSelectColor);
+}
 
-checkWinner(scoreDolphins, scoreKoalas);
-
-scoreDolphins = calcAverage(85, 54, 41);
-scoreKoalas = calcAverage(23, 34, 27);
-
-checkWinner(scoreDolphins, scoreKoalas);
+function removeColor() {
+  const selectElement = document.getElementById("colorSelect");
+  const elementIndex = selectElement.selectedIndex;
+  const selectEachElement = selectElement.options[elementIndex];
+  selectEachElement && selectElement.remove(elementIndex);
+}
